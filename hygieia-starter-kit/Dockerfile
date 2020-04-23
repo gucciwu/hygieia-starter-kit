@@ -42,10 +42,12 @@ RUN systemctl enable mongod; \
 	systemctl enable sonarcollector.service; \
 	systemctl enable jenkinscollector.service; \
 	systemctl enable githubcollector.service; \
+    systemctl enable gitlabcollector.service; \
+    systemctl enable jiracollector.service; \
 	systemctl enable httpd.service
 
 WORKDIR /hygieia/
-RUN chmod 777 properties-builder.sh 
+RUN chmod 777 properties-builder.sh
 
 ENTRYPOINT ["/hygieia/properties-builder.sh"]
 CMD ["/usr/sbin/init"]

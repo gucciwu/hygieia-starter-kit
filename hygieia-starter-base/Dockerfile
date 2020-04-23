@@ -28,7 +28,7 @@ mkdir -p /hygieia/cacerts
 RUN  yum -y install mongodb-org; \
 yum -y install httpd; \
 yum -y install java-1.8.0-openjdk-devel; \
-yum clean all; 
+yum clean all;
 
 # Pulls API jar
 RUN curl -o /hygieia/api/api.jar http://central.maven.org/maven2/com/capitalone/dashboard/api/3.1.1/api-3.1.1.jar
@@ -45,7 +45,14 @@ RUN curl -o /hygieia/collectors/sonar-codequality-collector.jar http://central.m
 # Pulls Jenkins Collector jar
 RUN curl -o /hygieia/collectors/jenkins-build-collector.jar http://central.maven.org/maven2/com/capitalone/dashboard/jenkins-build-collector/3.1.0/jenkins-build-collector-3.1.0.jar
 
-# Bind to 0.0.0.0 to allow for external connection 
+# Pulls Gitlab Collector jar
+RUN curl -o /hygieia/collectors/gitlab-scm-collector.jar http://central.maven.org/maven2/com/capitalone/dashboard/gitlab-scm-collector/3.1.0/gitlab-scm-collector-3.1.0.jar
+
+# Pulls JIRA Collector jar
+RUN curl -o /hygieia/collectors/jira-feature-collector.jar http://central.maven.org/maven2/com/capitalone/dashboard/jira-feature-collector/3.1.0/jira-feature-collector-3.1.0.jar
+
+
+# Bind to 0.0.0.0 to allow for external connection
 RUN sed -i "s|bindIp: 127.0.0.1|bindIp: 0.0.0.0|g" /etc/mongod.conf
 
 WORKDIR /hygieia/ui
