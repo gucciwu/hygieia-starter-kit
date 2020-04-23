@@ -40,11 +40,11 @@ services:
       - SONAR_PASSWORD=
     privileged: true
 # If you want to view logs locally or have mongo data persisted uncomment out the below. 
-#    volumes:
+    volumes:
 # This is for getting container logs locally
-#      - './logs:/hygieia/logs'
+      - './logs:/hygieia/logs'
 # This is for persisting data after the container has stopped
-#      - './db/data:/var/lib/mongo'
+      - './db/data:/var/lib/mongo'
 
 
 
