@@ -1,5 +1,5 @@
 [Unit]
-Description=GitlabCollectorService
+Description=JiraCollectorService
 
 [Service]
 ExecStart=/usr/bin/java -Djavax.net.ssl.trustStore=/usr/lib/jvm/java-openjdk/jre/lib/security/cacerts -Dlogging.config=file:/hygieia/collectors/logback_jira.xml -jar /hygieia/collectors/jira-feature-collector.jar --spring.config.name=jira --spring.config.location=/hygieia/application.properties

@@ -22,6 +22,11 @@ EXPOSE 27017
 ENV JAVA_HOME /usr/lib/jvm/java-openjdk
 ENV PROP_FILE /hygieia/application.properties
 
+RUN mkdir -p /hygieia/logs; \
+mkdir -p /hygieia/ui/; \
+mkdir -p /hygieia/api/; \
+mkdir -p /hygieia/collectors/; \
+mkdir -p /hygieia/cacerts
 
 COPY /api/* /hygieia/api/
 COPY /system/* /etc/systemd/system/
